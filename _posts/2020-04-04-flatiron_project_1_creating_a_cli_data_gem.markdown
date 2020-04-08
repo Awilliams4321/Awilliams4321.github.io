@@ -58,7 +58,6 @@ end
 3) A **CLI class** to allow users to interact with my data: 
 
 In this class, I created a #start_up the method that i could execute in my run file using the code 'CLI.new.start_up'. It consists of my #welcome, #get_char_list( which gets access to the website's data defined in my API class) and my #options method. In my #char_list method, I numbered every character in the array and listed them by their name attribute. I then created a #choose_character method that allows the user to enter the character name they would like more info about using the #find_by_name method created in the Character object class. After the name has been entered, the #char_choice method is invoked and they receive a list of details or 'attributes' (also defined in the Character object class):
-
 ```
 class CLI 
   
@@ -156,7 +155,7 @@ class CLI
     end 
   end
 	```
-
+	
 Because the concepts of this project were fairly new to me, I ended up utilizing a lot of the resources available to all students such as documents on how to identify scrapeable sites, Bundler Gem docs, as well as videos on how to set up your environment file to require external gems using the keyword 'require' and create a path to access the files in your application using 'require_relative'. These resources were extremely helpful when setting up my API class especially.
 
 I was able to use the weeks of repititive practice and OO Ruby knowledge to build my CLI class and make it as “dry” as possible. I reviewed many previous lessons like mass assignment and iteration to help me apply methods to all objects instead of having a ton of repetitive code. Completing this project not only allowed me to see how all of the material I have been learning over the weeks comes together to interact and build programs but it also pushed me outside of my comfort zone and required me to build relationships with the other students in my cohort. It was very relieving to know that I wasnt alone when I was struggling and it was great being able to ask for assistance from those who could help me understand things in a way that the online lessons couldnt fully do. I also had a boost in confidence everytime i was able to help others understand things as well. I learned so much by applying my knowledge to build a Ruby gem and i am extremely excited to have my knowledge continuously expanded over the course of this program.
