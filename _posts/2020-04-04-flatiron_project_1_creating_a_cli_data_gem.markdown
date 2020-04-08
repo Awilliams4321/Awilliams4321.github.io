@@ -56,7 +56,7 @@ class Characters
 end
 ```
 
-3) Lastly, I created a **CLI class** to allow users to interact with my data: 
+3) A **CLI class** to allow users to interact with my data: 
 
 Here i created a start_up the method that i could execute in my run file using the code 'CLI.new.start_up':
 ```
@@ -141,7 +141,7 @@ class CLI
 	```
 	
 I then created a method that allows the user to enter the character name they would like more info about using the #find_by_name method created in the Character object class. After the name has been entered they receive a list of details or 'attributes' (also defined in the Character object class):
-	```
+```
   def choose_character
     puts "Enter the name of the character you would like more info about:"
     puts ""
