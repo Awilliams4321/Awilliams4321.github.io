@@ -137,8 +137,7 @@ class CLI
     sleep(2)
     puts "> If you would like to exit, enter 'exit'."
   end 
-	
-	```
+```
 	
 I then created a method that allows the user to enter the character name they would like more info about using the #find_by_name method created in the Character object class. After the name has been entered they receive a list of details or 'attributes' (also defined in the Character object class):
 ```
@@ -173,7 +172,7 @@ I then created a method that allows the user to enter the character name they wo
       choose_character
     end 
   end
-	```
+```
 
 Because the concepts of this project were fairly new to me, I ended up utilizing a lot of the resources available to all students such as documents on how to identify scrapeable sites, Bundler Gem docs, as well as videos on how to set up your environment file to require external gems using the keyword 'require' and create a path to access the files in your application using 'require_relative'. These resources were extremely helpful when setting up my API class especially.
 
