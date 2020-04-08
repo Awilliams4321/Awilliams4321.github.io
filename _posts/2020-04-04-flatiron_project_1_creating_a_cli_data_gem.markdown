@@ -105,7 +105,7 @@ class CLI
     puts "Invalid entry. Please re-enter request."
   end 
 	
-	 def get_char_list 
+	def get_char_list 
     API.new.get_info
   end 
   
