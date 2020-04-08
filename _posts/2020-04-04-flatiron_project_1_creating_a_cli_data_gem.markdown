@@ -115,6 +115,7 @@ class CLI
 	def get_char_list 
     API.new.get_info
   end 
+	
 	```
 	
 	
@@ -136,6 +137,7 @@ class CLI
     sleep(2)
     puts "> If you would like to exit, enter 'exit'."
   end 
+	
 	```
 	
 I then created a method that allows the user to enter the character name they would like more info about using the #find_by_name method created in the Character object class. After the name has been entered they receive a list of details or 'attributes' (also defined in the Character object class):
