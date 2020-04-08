@@ -5,7 +5,7 @@ date:       2020-04-04 18:09:33 -0400
 permalink:  flatiron_project_1_creating_a_cli_data_gem
 ---
 
-1
+
 Today i submitted a project that required me to build a Ruby gem that provides a CLI (Command Line Interface) to an external data source. I decided to utilize an API (Application Programming Interface) from a public website instead of scraping data  so that i could use more of my time incorporating the Object Oriented Ruby concepts I have been learning during these first 7 weeks at Flatiron School. To be honest, 7 weeks ago i wasnt even familiar with words like 'API', 'CLI', or 'OO Ruby', so even though this project was challenging and required me to exhaust all resources to complete, I can only feel pride in what I have learned thus far.
 
 In order to get my project functioning i started off by building 3 classes:
