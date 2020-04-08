@@ -5,7 +5,7 @@ date:       2020-04-04 18:09:33 -0400
 permalink:  flatiron_project_1_creating_a_cli_data_gem
 ---
 
-
+1
 Today i submitted a project that required me to build a Ruby gem that provides a CLI (Command Line Interface) to an external data source. I decided to utilize an API (Application Programming Interface) from a public website instead of scraping data  so that i could use more of my time incorporating the Object Oriented Ruby concepts I have been learning during these first 7 weeks at Flatiron School. To be honest, 7 weeks ago i wasnt even familiar with words like 'API', 'CLI', or 'OO Ruby', so even though this project was challenging and required me to exhaust all resources to complete, I can only feel pride in what I have learned thus far.
 
 In order to get my project functioning i started off by building 3 classes:
@@ -87,11 +87,9 @@ class CLI
     puts "  STAY OUT OF MY PERSONAL SPACE!"
     puts "  ------------------------------"
   end
-	
+
   def options
-    
     usr_entry = gets.strip.downcase
-    
     if usr_entry == 'characters'
       puts char_list
       options 
@@ -102,15 +100,15 @@ class CLI
       options 
     end
   end 
-	
-	def invalid_entry
+  
+  def invalid_entry
     puts "Invalid entry. Please re-enter request."
   end 
 	
-	def get_char_list 
+	 def get_char_list 
     API.new.get_info
   end 
-	
+  
   def char_list 
     Characters.all.each.with_index do |character, index|
       puts "#{index + 1}. #{character.name.split.map(&:capitalize).join(' ')}"
@@ -125,7 +123,7 @@ class CLI
     sleep(2)
     puts "> If you would like to exit, enter 'exit'."
   end 
-
+  
   def choose_character
     puts "Enter the name of the character you would like more info about:"
     puts ""
@@ -154,7 +152,7 @@ class CLI
       choose_character
     end 
   end
-	```
+```
 	
 Because the concepts of this project were fairly new to me, I ended up utilizing a lot of the resources available to all students such as documents on how to identify scrapeable sites, Bundler Gem docs, as well as videos on how to set up your environment file to require external gems using the keyword 'require' and create a path to access the files in your application using 'require_relative'. These resources were extremely helpful when setting up my API class especially.
 
