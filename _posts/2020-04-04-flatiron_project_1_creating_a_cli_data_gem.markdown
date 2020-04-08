@@ -109,12 +109,14 @@ class CLI
   end 
 	```
 	
+	
 	This is the method i created to get access to my website's data defined in my API class:
 	```
 	def get_char_list 
     API.new.get_info
   end 
 	```
+	
 	
 	In my character list method, I numbered every character in the array and listed them by their name attribute:
   ```
