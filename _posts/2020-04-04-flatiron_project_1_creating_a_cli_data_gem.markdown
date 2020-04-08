@@ -5,7 +5,7 @@ date:       2020-04-04 18:09:33 -0400
 permalink:  flatiron_project_1_creating_a_cli_data_gem
 ---
 
-test2
+
 Today i submitted a project that required me to build a Ruby gem that provides a CLI (Command Line Interface) to an external data source. I decided to utilize an API (Application Programming Interface) from a public website instead of scraping data  so that i could use more of my time incorporating the Object Oriented Ruby concepts I have been learning during these first 7 weeks at Flatiron School. To be honest, 7 weeks ago i wasnt even familiar with words like 'API', 'CLI', or 'OO Ruby', so even though this project was challenging and required me to exhaust all resources to complete, I can only feel pride in what I have learned thus far.
 
 In order to get my project functioning i started off by building 3 classes:
@@ -57,7 +57,8 @@ end
 
 3) A **CLI class** to allow users to interact with my data: 
 
-Here i created a start_up the method that i could execute in my run file using the code 'CLI.new.start_up':
+In this class, I created a #start_up the method that i could execute in my run file using the code 'CLI.new.start_up'. It consists of my #welcome, #get_char_list( which gets access to the website's data defined in my API class) and my #options method. In my #char_list method, I numbered every character in the array and listed them by their name attribute. I then created a #choose_character method that allows the user to enter the character name they would like more info about using the #find_by_name method created in the Character object class. After the name has been entered, the #char_choice method is invoked and they receive a list of details or 'attributes' (also defined in the Character object class):
+
 ```
 class CLI 
   
@@ -106,27 +107,15 @@ class CLI
 	def invalid_entry
     puts "Invalid entry. Please re-enter request."
   end 
-	```
 	
-	
-This is the method i created to get access to my website's data defined in my API class:
-
-	```
 	def get_char_list 
     API.new.get_info
   end 
-	```
 	
-	
- In my character list method, I numbered every character in the array and listed them by their name attribute:
- 
- ```
   def char_list 
-    
     Characters.all.each.with_index do |character, index|
       puts "#{index + 1}. #{character.name.split.map(&:capitalize).join(' ')}"
     end 
-    
     puts ""
     puts ""
     choose_character
@@ -137,19 +126,12 @@ This is the method i created to get access to my website's data defined in my AP
     sleep(2)
     puts "> If you would like to exit, enter 'exit'."
   end 
-	```
-	
-I then created a method that allows the user to enter the character name they would like more info about using the #find_by_name method created in the Character object class. After the name has been entered they receive a list of details or 'attributes' (also defined in the Character object class):
 
-```
   def choose_character
     puts "Enter the name of the character you would like more info about:"
     puts ""
-    
     usr_entry = gets.strip.split.map(&:capitalize).join(' ')
-    
     char_choice(usr_entry)
-    
   end 
   
   def char_choice(character)
