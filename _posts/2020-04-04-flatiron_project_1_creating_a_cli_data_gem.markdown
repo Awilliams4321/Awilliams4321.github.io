@@ -25,7 +25,7 @@ class API
 end 
 ```
 
-2) An **Object class** that saves each new character object and assigns it a list of attributes and values upon instantiation. I then defined my initialize method to accept an unspecified hash and mass assign each defined attribute to it's value. Because I only wanted to utilize specific keys and values from the hash, I used the '.respond_to?' method to grab only the information from the attr_accessors I had defined. After creating a save method to shovel each new object instance into the @@all array, i created a 'find_by_name' method that searches through each object in the @@all array and finds the character.name that matches the name passed in:
+2) A **Characters class** that saves each new character object and assigns it a list of attributes and values upon instantiation. I then defined my initialize method to accept an unspecified hash and mass assign each defined attribute to it's value. Because I only wanted to utilize specific keys and values from the hash, I used the '.respond_to?' method to grab only the information from the attr_accessors I had defined. After creating a save method to shovel each new object instance into the @@all array, i created a Characters::find_by_name method that searches through each object in the @@all array and finds the character.name that matches the name passed in:
 ```
 class Characters
 
@@ -57,7 +57,7 @@ end
 
 3) A **CLI class** to allow users to interact with my data: 
 
-In this class, I created a #start_up the method that i could execute in my run file using the code 'CLI.new.start_up'. It consists of my #welcome, #get_char_list( which gets access to the website's data defined in my API class) and my #options method. In my #char_list method, I numbered every character in the array and listed them by their name attribute. I then created a #choose_character method that allows the user to enter the character name they would like more info about using the #find_by_name method created in the Character object class. After the name has been entered, the #char_choice method is invoked and they receive a list of details or 'attributes' (also defined in the Character object class):
+In this class, I created a CLI::start_up the method that i could execute in my run file using the code 'CLI.new.start_up'. It consists of my CLI::welcome, #CLI::get_char_list( which gets access to the website's data defined in my API class) and my CLI::options method. In my CLI::char_list method, I numbered every character in the array and listed them by their name attribute. I then created a CLI::choose_character method that allows the user to enter the character name they would like more info about using the Character::find_by_name method. After the name has been entered, the CLI::char_choice method is invoked and they receive a list of details or 'attributes' (also defined in the Character object class):
 ```
 class CLI 
   
