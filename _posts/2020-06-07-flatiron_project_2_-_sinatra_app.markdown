@@ -1,7 +1,7 @@
 ---
 layout: post
 title:      "'Flatiron Project #2 - Sinatra App'"
-date:       2020-06-07 23:46:30 +0000
+date:       2020-06-07 19:46:31 -0400
 permalink:  flatiron_project_2_-_sinatra_app
 ---
 
@@ -24,59 +24,84 @@ The majority of my CRUD methods were created in the Bills Controller.
 class BillsController < ApplicationController
 
     get '/bills/new' do 
+        redirect to "/" if !is_logged_in?
+
         erb :'bills/new'
     end
 
     post '/bills' do #CREATE
-        @bill = Bill.create(
+        @bill = Bill.new(
             name: params[:name],
             creditor: params[:creditor],
             balance_owed: params[:balance_owed],
             monthly_payment: params[:monthly_payment],
-            due_date: params[:due_date]
+            due_date: params[:due_date],
+            user_id: current_user.id
         )
-        redirect "/bills/#{@bill.id}"
+        if @bill.save
+            redirect "/bills/#{@bill.id}"
+        else
+             erb :'/bills/new'
+        end
     end 
 
     get '/bills/:id' do #READ
-        @bill = Bill.find(params[:id])
-        erb :'/bills/show'
+        redirect to "/" if !is_logged_in?
+        @bill = Bill.find_by_id(params[:id])
+
+        if @bill && @bill.user_id == current_user.id 
+            erb :'bills/show'
+        else
+            redirect to "/bills"
+        end
     end
 
     get '/bills' do 
-        @bills = Bill.all
+        redirect to "/" if !is_logged_in?
+        @bills = current_user.bills
         erb :'bills/index'
     end
 
     get '/bills/:id/edit' do #UPDATE
-        @bill = Bill.find(params[:id])
-        erb :'bills/edit'
+        redirect to "/" if !is_logged_in?
+        @bill = Bill.find_by_id(params[:id])
+
+
+        if @bill && @bill.user_id == current_user.id 
+            erb :'bills/edit'
+
+        else
+            redirect to "/bills"
+        end
     end 
 
-    patch '/bills/:id' do
-        @bill = Bill.find(params[:id])
+    patch '/bills/:id' do #ADD
+        redirect to "/" if !is_logged_in?
+        @bill = Bill.find_by_id(params[:id])
         @bill.update(
             name: params[:name],
             creditor: params[:creditor],
-            balance_owed: params[:balance_owed],
+            balance_owed: params[:balance_owed], 
             monthly_payment: params[:monthly_payment],
             due_date: params[:due_date]
         )
         redirect "/bills/#{@bill.id}"
-
     end 
 
     delete '/bills/:id' do #DELETE
-        @bill = Bill.find(params[:id])
-        @bill.destroy
-        redirect "/bills"
+        redirect to "/" if !is_logged_in?
+        bill = Bill.find_by_id(params[:id])
+
+         bill.destroy if bill && bill.user_id == current_user.id
+            redirect to "/bills" 
     end
+
 end
 ```
 
 The connection between M-V-C is that the Models allow us to gather information from the tables and utilize them in our Controller methods. In our Controller methods, we can get/ post user information and display them on a View page.  
 
-A portion of this project dealt with user authentication. I used the bcrypt gem to "salt" or encrypt a users password upo sign in so that their password stays private. With the assistance of helper methods and enabling sessions in the main controller, I was able to log users in and access a users profile via their session[:user_id].
+A portion of this project dealt with user authentication. I used the bcrypt gem to "salt" or encrypt a users password upon sign in so that their password stays private. With the assistance of helper methods and enabling sessions in the main controller, I was able to log users in and access a users profile via their session[:user_id].
 ```
 class ApplicationController < Sinatra::Base
 
@@ -104,6 +129,6 @@ class ApplicationController < Sinatra::Base
 end
 ```
 
-This was a very fun project to work on because it allowed me to see how the things ive been learning connect. I am definitely ooking forward to the upcoming Rails module.
+This was a very fun project to work on because it allowed me to see how the things ive been learning connect. I am definitely looking forward to the upcoming Rails module.
 
 
