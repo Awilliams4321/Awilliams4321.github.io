@@ -1,7 +1,7 @@
 ---
 layout: post
 title:      "Rails App | Flatiron Project #3 "
-date:       2020-08-07 19:49:17 +0000
+date:       2020-08-07 15:49:18 -0400
 permalink:  rails_app_flatiron_project_3
 ---
 
@@ -29,9 +29,10 @@ In my project, I had to decide which form was the approriate form to use and it 
 
     <%= f.submit 'Update Review' %>
 <% end %>		
-		```
+```
 		
 		In my above example, the 'f' variable is my "object binder" and i am able to call methods on my review obj. such as #text_field. It would be better to use a form_tag if i am creating a basic form, like a sign-up form for new users. Ex:
+		
 ```
 <%= form_tag login_path do %>
   <p><label>Email: </label>
@@ -45,11 +46,13 @@ In my project, I had to decide which form was the approriate form to use and it 
 
 <% end %>
 ```
+
 In this example, No objects are needed to create this form as im not interacting with any particular model.
 
 #2. Strong Params
 
 Private methods are methods that are in/available to a controller that tell Ruby "All methods from this point on can be called from withihn the object, but not from outside."
+
 ```
 private
 
@@ -59,6 +62,7 @@ end
 ```
 
 This specific private method is called "strong params". This is because we are telling the method, within an object(:review), you can permit theses given attributes (:musical_id, :headline, etc.). Then, we have access to those permitted attribute in methods like so:
+
 ```
         @review = Review.new(review_params)
 ```
@@ -66,6 +70,7 @@ This specific private method is called "strong params". This is because we are t
 #3. Defining a Nested Route
 
 In config/routes.rb is where we define all routes including nested ones. In order for Ruby to know a route is nested, you use a 'do' block. In my project, I nested reviews under musicals:
+
 ```
 resources :musicals, only: [:index] do
     resources :reviews, only: [:show, :index, :update]
@@ -74,6 +79,7 @@ resources :musicals, only: [:index] do
 
 The routes that are now provided allow us to access a specific musical_ by id and that specifc musicals review(s).
 Ex:
+
 ```
 /musicals/1/reviews/1
 ```
