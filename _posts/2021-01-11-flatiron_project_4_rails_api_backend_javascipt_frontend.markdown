@@ -1,7 +1,7 @@
 ---
 layout: post
 title:      "Flatiron Project #4: Rails API Backend/JavaScipt Frontend"
-date:       2021-01-11 19:37:38 +0000
+date:       2021-01-11 14:37:39 -0500
 permalink:  flatiron_project_4_rails_api_backend_javascipt_frontend
 ---
 
@@ -67,6 +67,7 @@ submitBillForm.addEventListener("submit", Bill.postBill)
 ```
 
 When the form is submitted(or "clicked") on the web page, the event will be triggered and sent to the method Bill.postBill method below:
+
 ```
 static postBill(e) {
         e.preventDefault()
@@ -100,3 +101,5 @@ static postBill(e) {
 		```
 		
 The method above contains JS variables set to the ids of the inputs in the bill form, which will allow me to access the data stored inside via the varible name. I then made a fetch request that POST's the submitted data to my database. In order for Rails to understand the data it is being sent, I have to define within the fetch request, the "Content-type" the data is and what data type should be "Accept"ed. I then stringify the JSON objects and set the Bill models attributes equal to the value of the inputs submitted in the bill form. As you can see, the parseInt() funciton was needed for the category_id attribute because in my html form, the category name values are set to number which are returned as strings. Rails cant read/accept data in string format so parseInt alllowed me to parse the string submitted and return the integer value.
+
+These are just some of the basic JS functions i got to work with. I cant wait to continue practicing and add more features to my app!
