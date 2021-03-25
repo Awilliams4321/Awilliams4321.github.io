@@ -54,13 +54,11 @@ const handleClick = event => {
 ```
 
 One concept that is that is VERY important to understand, is that the { connect } component made avalable to us by react-redux. The connect() function connects a React component to a Redux store. It accepts mapStateToProps(if not being used, pass in null as the argument), mapDispatchToProps, and the component it is being connected to. The mapDispatch to props argument is where we can pass in the action creator we need out component to have access to. In this case, its deleteTrail. 
-
 ```
 export default connect(mapStateToProps, { deleteTrail })(TrailsList)
 ```
 
 Because we passed in the deleteTrail action, we now have access to that fuction in our component. Below is my deleteTrail action which accepts the trails id(trailId) and sends that data to the reducer function as the payload:
-
 ```
 export default function deleteTrail(trailId){
     return (dispatch) => {
@@ -78,7 +76,6 @@ export default function deleteTrail(trailId){
 ```
 
 In my DELETE_TRAIL reducer, I filter through the state and return all trails passed in excluding the id that matched the trail clicked. See how the case below matches the type dispatched from my action?
-
 ```
 export const trailsReducer = (state = [], action) => {
     switch(action.type){
