@@ -1,7 +1,7 @@
 ---
 layout: post
 title:      "'Flatiron Project #5: The Capstone'"
-date:       2021-03-25 20:28:00 +0000
+date:       2021-03-25 16:28:00 -0400
 permalink:  flatiron_project_5_the_capstone
 ---
 
@@ -40,7 +40,9 @@ As you a can see above, reducers find the proper action to execute by matching t
 3) The state is updated by returning the data passed in from the action's payload key which in this case, is all of the trails fetched from the rails API backend. If we wanted to do something with that data before updating the state we can! Let's take a look at how by following the flow of how a trail is deleted from my app.
 
 Firstly, I created a delete button in my TrailsList Component that triggers the handleClick function when clicked.
-```<Button><button id={trail.id} onClick={handleClick}>Delete Trail</button></Button>```
+```
+<Button><button id={trail.id} onClick={handleClick}>Delete Trail</button></Button>
+```
 
 The handleClick() function parses the integer of the number from the button clicked(every trail has a unique key). That id is then passed into the handleClick function where the deleteTrail action creator is available to us. 
 ```const handleClick = event => {
@@ -51,7 +53,9 @@ The handleClick() function parses the integer of the number from the button clic
 ```
 
 One concept that is that is VERY important to understand, is that the { connect } component made avalable to us by react-redux. The connect() function connects a React component to a Redux store. It accepts mapStateToProps(if not being used, pass in null as the argument), mapDispatchToProps, and the component it is being connected to. The mapDispatch to props argument is where we can pass in the action creator we need out component to have access to. In this case, its deleteTrail. 
-```export default connect(mapStateToProps, { deleteTrail })(TrailsList)```
+```
+export default connect(mapStateToProps, { deleteTrail })(TrailsList)
+```
 
 Because we passed in the deleteTrail action, we now have access to that fuction in our component. Below is my deleteTrail action which accepts the trails id(trailId) and sends that data to the reducer function as the payload :
 ```
