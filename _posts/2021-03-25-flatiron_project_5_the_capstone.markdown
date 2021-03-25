@@ -45,8 +45,8 @@ Firstly, I created a delete button in my TrailsList Component that triggers the 
 ```
 
 The handleClick() function parses the integer of the number from the button clicked(every trail has a unique key). That id is then passed into the handleClick function where the deleteTrail action creator is available to us. 
-
-```const handleClick = event => {
+```
+const handleClick = event => {
         const id = parseInt(event.target.id)
         deleteTrail(id)
         history.push('/trails')
